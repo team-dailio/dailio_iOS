@@ -34,7 +34,7 @@ let targets: [Target] = [
         scripts: scripts,
         dependencies: [
             .Projects.flow,
-//            .SPM.FCM
+            .SPM.FCM
         ]
 //        settings: .settings(base: env.baseSetting)
     )
@@ -64,7 +64,7 @@ let schemes: [Scheme] = [
 let project = Project(
     name: env.targetName,
     organizationName: env.organizationName,
-//    packages: [.FCM],
+    packages: [.FCM],
     settings: settings,
     targets: targets
 //    schemes: schemes

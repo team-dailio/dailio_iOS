@@ -9,6 +9,6 @@ let project = Project.makeModule(
     dependencies: [
         .Projects.data,
         .Projects.presentation,
-//        .SPM.FCM
+        .SPM.FCM
     ]
 )
