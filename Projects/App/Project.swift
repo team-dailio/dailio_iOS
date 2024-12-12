@@ -25,16 +25,17 @@ let targets: [Target] = [
         name: env.targetName,
         platform: env.platform,
         product: .app,
-        bundleId: "\(env.organizationName)",
+        bundleId: "$(APP_BUNDLE_ID)",
         deploymentTarget: env.deploymentTarget,
         infoPlist: .file(path: "Support/Info.plist"),
         sources: ["Sources/**"],
-        resources: ["Resources/**","Resources/LaunchScreen.storyboard"],
+        resources: ["Resources/**"],
+//        entitlements: "Support/\(env.appName).entitlements",
         scripts: scripts,
         dependencies: [
-//            .Projects.feature
+            .Projects.flow,
+//            .SPM.FCM
         ]
-//        ],/
 //        settings: .settings(base: env.baseSetting)
     )
 ]
@@ -63,6 +64,7 @@ let schemes: [Scheme] = [
 let project = Project(
     name: env.targetName,
     organizationName: env.organizationName,
+//    packages: [.FCM],
     settings: settings,
     targets: targets
 //    schemes: schemes
