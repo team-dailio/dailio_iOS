@@ -1,0 +1,38 @@
+name: "버그 발생"
+description: "버그가 발생하였습니다! 🐛"
+labels: FIX
+
+body:
+    - type: textarea
+      id: bug-description
+      attributes:
+          label: Describe
+          description: |
+              버그에 관련하여 간단하게 설명해주세요.
+          placeholder: |
+              ex) null로 인한 렌더링 버그
+      validations:
+          required: true
+
+    - type: textarea
+      id: how-to-bug
+      attributes:
+          label: How
+          description: |
+              어떤 상황에서 버그가 발생하는지 설명해주세요.
+          placeholder: |
+              1. 홈 화면에서 '...'
+              2. 뒤로가기 후 '....'
+              3. 버튼 2번 클릭 후 '....'
+              4. 에러 발생
+      validations:
+          required: false
+
+    - type: textarea
+      id: additional-contents
+      attributes:
+          label: Additional
+          description: |
+              추가로 할말을 작성해주세요.
+      validations:
+          required: false
