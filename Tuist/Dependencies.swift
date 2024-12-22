@@ -47,16 +47,6 @@ let dependencies = Dependencies.init(
                 url: "https://github.com/Swinject/Swinject.git",
                 requirement: .upToNextMajor(from: "2.8.0")
             ),
-            //Lottie
-            .remote(
-                url: "https://github.com/airbnb/lottie-ios",
-                requirement: .upToNextMajor(from: "4.3.3")
-            ),
-            //SkeletonView
-            .remote(
-                url: "https://github.com/Juanpe/SkeletonView.git",
-                requirement: .upToNextMajor(from: "1.7.0")
-            ),
             //FSCalendar
             .remote(
                 url: "https://github.com/WenchaoD/FSCalendar.git",
@@ -70,16 +60,16 @@ let dependencies = Dependencies.init(
                 url: "https://github.com/firebase/firebase-ios-sdk.git",
                 requirement: .upToNextMajor(from: "10.3.0")
             ),
-            .remote(
-                url: "https://github.com/daltoniam/Starscream.git",
-                requirement: .upToNextMajor(from: "4.0.6")
-            )
+//            .remote(
+//                url: "https://github.com/daltoniam/Starscream.git",
+//                requirement: .upToNextMajor(from: "4.0.6")
+//            )
         ],
         baseSettings: .settings(
-            configurations: [
-                .debug(name: .stage),
-                .release(name: .prod)
-            ]
+//            configurations: [
+//                .debug(name: .stage),
+//                .release(name: .prod)
+//            ]
         )
     ),
     platforms: [.iOS]

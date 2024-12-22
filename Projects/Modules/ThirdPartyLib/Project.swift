@@ -19,11 +19,9 @@ let project = Project.makeModule(
         .SPM.RxMoya,
         .SPM.RxGesture,
         .SPM.Swinject,
-        .SPM.Lottie,
-        .SPM.SkeletonView,
         .SPM.FSCalendar,
         .SPM.RxDataSources,
         .SPM.FCM,
-        .SPM.StarScream
+//        .SPM.StarScream
     ]
 )
