@@ -1,6 +1,6 @@
 import Foundation
 
-public enum dailioFontStyle {
+public enum DailioFontStyle {
     case heading1
     case heading2
     case heading3

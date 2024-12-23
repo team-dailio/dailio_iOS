@@ -1,12 +1,12 @@
 import UIKit
 
 public extension UIFont {
-    static func dailioFont(_ font: dailioFontStyle) -> UIFont {
+    static func dailioFont(_ font: DailioFontStyle) -> UIFont {
         font.uiFont()
     }
 }
 
-extension dailioFontStyle {
+extension DailioFontStyle {
     func lineHeight() -> CGFloat {
         switch self {
         case .heading1:

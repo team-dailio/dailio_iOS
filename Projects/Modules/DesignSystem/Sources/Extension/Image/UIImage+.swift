@@ -1,7 +1,7 @@
 import UIKit
 
 public extension UIImage {
-    static let filledHeart = DesignSystemAsset.Images.filledheart.image
+    static let filledHeart = DesignSystemAsset.Images.filledHeart.image
     static let outlinedHeart = DesignSystemAsset.Images.outlinedHeart.image
     static let filledHome = DesignSystemAsset.Images.filledHome.image
     static let outlinedHome = DesignSystemAsset.Images.outlinedHome.image

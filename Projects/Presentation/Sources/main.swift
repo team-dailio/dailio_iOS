@@ -1,8 +1,22 @@
-//
-//  main.swift
-//  Presentation
-//
-//  Created by 원이 on 12/12/24.
-//  Copyright © 2024 com.dailio.app. All rights reserved.
-//
+import Foundation
+import UIKit
+import SnapKit
+import Then
 
+public class TestViewController: UIViewController {
+    let label = UILabel().then {
+        $0.text = "짜쟌"
+    }
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        view.addSubview(label)
+        
+        label.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+    }
+}
