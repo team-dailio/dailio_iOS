@@ -22,4 +22,5 @@ public extension UIImage {
     static let dropdown = DesignSystemAsset.Images.dropdown.image
     static let comment = DesignSystemAsset.Images.comment.image
     static let person = DesignSystemAsset.Images.person.image
+    static let logo = DesignSystemAsset.Images.logo.image
 }
