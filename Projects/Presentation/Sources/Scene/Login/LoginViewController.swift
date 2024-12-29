@@ -21,7 +21,7 @@ public class LoginViewController: BaseViewController<LoginViewModel> {
     private let idAuthTextField = DailioAuthTectField("아이디", placeholder: "5자 ~ 10자 이상")
     private let pwdAuthTextField = DailioAuthTectField("비밀번호", placeholder: "영어, 숫자, 특수문자 포함 5자 이상")
     private let signupButton = SignupButton()
-    private let loginButton = DailioButton("로그인", textColor: .primary100, buttonColor: .primary500)
+    private let loginButton = DailioAuthButton("로그인")
 
     public override func addView() {
         [
@@ -51,11 +51,11 @@ public class LoginViewController: BaseViewController<LoginViewModel> {
             $0.centerX.equalToSuperview()
         }
         idAuthTextField.snp.makeConstraints {
-            $0.top.equalTo(loginPromptLabel.snp.bottom).offset(30)
+            $0.top.equalTo(loginPromptLabel.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview()
         }
         pwdAuthTextField.snp.makeConstraints {
-            $0.top.equalTo(idAuthTextField.authTextField.snp.bottom).offset(30)
+            $0.top.equalTo(idAuthTextField.authTextField.snp.bottom).offset(22)
             $0.leading.trailing.equalToSuperview()
         }
         signupButton.snp.makeConstraints {
