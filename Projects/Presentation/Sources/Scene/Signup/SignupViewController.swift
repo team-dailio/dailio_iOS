@@ -40,6 +40,10 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
     )
     private let signupButton = DailioAuthButton("가입하기")
 
+    public override func attribute() {
+        super.attribute()
+        self.navigationItem.hidesBackButton = true
+    }
     public override func addView() {
         [
             logoImageView,

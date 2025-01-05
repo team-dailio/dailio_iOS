@@ -25,10 +25,8 @@ public class LoginViewModel: BaseViewModel, Stepper {
             .distinctUntilChanged()
 
         input.signupButtonDidTap
-            .bind { [weak self] in
-                print("회원가입 버튼 눌림")
-                self?.steps.accept(DailioStep.signupRequired)
-            }
+            .map { DailioStep.signupIsRequired }
+            .bind(to: steps)
             .disposed(by: disposeBag)
 
         return Output(isButtonEnabled: isButtonEnabled)
