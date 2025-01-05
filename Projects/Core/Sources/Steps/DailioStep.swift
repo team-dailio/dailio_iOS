@@ -3,5 +3,6 @@ import Foundation
 import RxFlow
 
 public enum DailioStep: Step {
-    case signupRequired
+    case loginIsRequired
+    case signupIsRequired
 }

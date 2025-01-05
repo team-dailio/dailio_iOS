@@ -1,24 +1,28 @@
 import UIKit
-import Presentation
+import Flow
+import RxFlow
+import Core
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator = FlowCoordinator()
 
-    func scene(_ scene: UIScene,
-               willConnectTo session:
-               UISceneSession,
-               options connectionOptions: UIScene.ConnectionOptions
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
     ) {
             guard let windowScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-            window?.windowScene = windowScene
-        let navigationController = UINavigationController(
-            rootViewController: LoginViewController(viewModel: LoginViewModel())
+            let window = UIWindow(windowScene: windowScene)
+        let appFlow = AppFlow(window: window, container: AppDelegate.container)
+        coordinator.coordinate(
+            flow: appFlow,
+            with: AppStepper(),
+            allowStepWhenDismissed: false
         )
-            window?.rootViewController = navigationController
-            window?.makeKeyAndVisible()
-        }
+        window.makeKeyAndVisible()
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
 
@@ -29,4 +33,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {}
 
     func sceneDidEnterBackground(_ scene: UIScene) {}
+
 }
