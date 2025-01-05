@@ -34,7 +34,8 @@ public class LoginViewController: BaseViewController<LoginViewModel> {
     public override func bind() {
         let input = LoginViewModel.Input(
             idText: idAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
-            passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asObservable()
+            passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
+            signupButtonDidTap: signupButton.signupButton.rx.tap.asObservable()
         )
 
         let output = viewModel.transform(input: input)

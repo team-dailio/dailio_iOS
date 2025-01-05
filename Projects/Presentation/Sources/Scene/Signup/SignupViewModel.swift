@@ -5,7 +5,9 @@ import RxFlow
 import Core
 import Domain
 
-public class SignupViewModel: BaseViewModel {
+public class SignupViewModel: BaseViewModel, Stepper {
+    public var steps = PublishRelay<Step>()
+    
     public struct Input {}
 
     public struct Output {}
