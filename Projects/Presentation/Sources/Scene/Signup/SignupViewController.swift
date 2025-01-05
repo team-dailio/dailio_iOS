@@ -18,10 +18,26 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
             color: .gray500
         )
     }
-    private let idAuthTextField = DailioAuthTectField("아이디", placeholder: "5자 ~ 10자 이상")
-    private let pwdAuthTextField = DailioAuthTectField("비밀번호", placeholder: "영어, 숫자, 특수문자 포함 5자 이상")
-    private let pwdConfirmAuthTextField = DailioAuthTectField("비밀번호 확인", placeholder: "비밀번호 재입력")
-    private let emailAuthTextField = DailioAuthTectField("이메일", placeholder: "이메일 입력")
+    private let idAuthTextField = DailioAuthTextField(
+        "아이디",
+        placeholder: "5자 ~ 10자 이상"
+    )
+    private let pwdAuthTextField = DailioAuthTextField(
+        "비밀번호",
+        placeholder: "영어, 숫자, 특수문자 포함 5자 이상"
+    ).then {
+        $0.authTextField.isSecureTextEntry = true
+    }
+    private let pwdConfirmAuthTextField = DailioAuthTextField(
+        "비밀번호 확인",
+        placeholder: "비밀번호 재입력"
+    ).then {
+        $0.authTextField.isSecureTextEntry = true
+    }
+    private let emailAuthTextField = DailioAuthTextField(
+        "이메일",
+        placeholder: "이메일 입력"
+    )
     private let signupButton = DailioAuthButton("가입하기")
 
     public override func addView() {
@@ -56,15 +72,15 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
             $0.leading.trailing.equalToSuperview()
         }
         pwdAuthTextField.snp.makeConstraints {
-            $0.top.equalTo(idAuthTextField.authTextField.snp.bottom).offset(22)
+            $0.top.equalTo(idAuthTextField.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview()
         }
         pwdConfirmAuthTextField.snp.makeConstraints {
-            $0.top.equalTo(pwdAuthTextField.authTextField.snp.bottom).offset(22)
+            $0.top.equalTo(pwdAuthTextField.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview()
         }
         emailAuthTextField.snp.makeConstraints {
-            $0.top.equalTo(pwdConfirmAuthTextField.authTextField.snp.bottom).offset(22)
+            $0.top.equalTo(pwdConfirmAuthTextField.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview()
         }
         signupButton.snp.makeConstraints {
