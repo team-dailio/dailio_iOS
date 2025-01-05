@@ -61,12 +61,12 @@ extension DailioFontStyle {
             return 24
         case .heading6:
             return 20
-            
+
         case .body1, .body2:
             return 16
         case .body3, .body4:
             return 14
-        
+
         case .caption1, .caption2:
             return 12
         case .caption3, .caption4:
