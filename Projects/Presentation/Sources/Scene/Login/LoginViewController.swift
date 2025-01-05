@@ -18,11 +18,40 @@ public class LoginViewController: BaseViewController<LoginViewModel> {
             color: .gray500
         )
     }
-    private let idAuthTextField = DailioAuthTectField("아이디", placeholder: "5자 ~ 10자 이상")
-    private let pwdAuthTextField = DailioAuthTectField("비밀번호", placeholder: "영어, 숫자, 특수문자 포함 5자 이상")
+    private let idAuthTextField = DailioAuthTextField(
+        "아이디",
+        placeholder: "아이디 입력"
+    )
+    private let pwdAuthTextField = DailioAuthTextField(
+        "비밀번호",
+        placeholder: "비밀번호 입력"
+    ).then {
+        $0.authTextField.isSecureTextEntry = true
+    }
     private let signupButton = SignupButton()
     private let loginButton = DailioAuthButton("로그인")
 
+    public override func bind() {
+        let input = LoginViewModel.Input(
+            idText: idAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
+            passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
+            signupButtonDidTap: signupButton.signupButton.rx.tap.asObservable()
+        )
+
+        let output = viewModel.transform(input: input)
+
+        output.isButtonEnabled
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] isEnabled in
+                guard let self = self else { return }
+
+                self.loginButton.isEnabled = isEnabled
+                self.loginButton.backgroundColor = isEnabled ? UIColor.primary500 : UIColor.primary100
+                self.loginButton.setTitleColor(isEnabled ? UIColor.primary100 : UIColor.primary500, for: .normal)
+                self.loginButton.alpha = isEnabled ? 1 : 0.4
+            })
+            .disposed(by: disposeBag)
+    }
     public override func addView() {
         [
             logoImageView,
@@ -34,7 +63,6 @@ public class LoginViewController: BaseViewController<LoginViewModel> {
             loginButton
         ].forEach { self.view.addSubview($0) }
     }
-
     public override func setLayout() {
         logoImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(64)
@@ -55,7 +83,7 @@ public class LoginViewController: BaseViewController<LoginViewModel> {
             $0.leading.trailing.equalToSuperview()
         }
         pwdAuthTextField.snp.makeConstraints {
-            $0.top.equalTo(idAuthTextField.authTextField.snp.bottom).offset(22)
+            $0.top.equalTo(idAuthTextField.snp.bottom).offset(12)
             $0.leading.trailing.equalToSuperview()
         }
         signupButton.snp.makeConstraints {

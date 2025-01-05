@@ -6,7 +6,7 @@ final class SignupButton: BaseView {
     private let signupLabel = UILabel().then {
         $0.setDailioText("아직 가입하지 않으셨나요?", font: .body3, color: .gray500)
     }
-    private let signupButton = UIButton().then {
+    internal let signupButton = UIButton().then {
         $0.setTitle("회원가입", for: .normal)
         $0.setTitleColor(UIColor.primary500, for: .normal)
         $0.titleLabel?.font = .dailioFont(.body3)
@@ -20,6 +20,9 @@ final class SignupButton: BaseView {
         ].forEach { self.addSubview($0) }
     }
     override func setLayout() {
+        self.snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
         signupLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()
         }

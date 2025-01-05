@@ -4,7 +4,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-public final class DailioAuthTectField: UIView {
+public final class DailioAuthTextField: UIView {
     public let authTextField = UITextField().then {
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.black.cgColor
@@ -39,12 +39,16 @@ public final class DailioAuthTectField: UIView {
         self.authLabelView.addSubview(authLabel)
     }
     private func setLayout() {
+        self.snp.makeConstraints {
+            $0.height.equalTo(66)
+        }
         authTextField.snp.makeConstraints {
-            $0.height.equalTo(48)
+            $0.top.equalToSuperview().inset(8)
             $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(48)
         }
         authLabelView.snp.makeConstraints {
-            $0.bottom.equalTo(authTextField.snp.top).inset(8)
+            $0.top.equalToSuperview()
             $0.leading.equalTo(authTextField.snp.leading).inset(12)
             $0.height.equalTo(16)
         }
