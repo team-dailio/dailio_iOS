@@ -46,16 +46,16 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
     }
     public override func bind() {
         let input = SignupViewModel.Input(
-            idText: idAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
-            passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
-            passwordConfirmText: pwdConfirmAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
-            emailText: emailAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
-            signupButtonDidTap: signupButton.rx.tap.asObservable()
+            idText: idAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
+            passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
+            passwordConfirmText: pwdConfirmAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
+            emailText: emailAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
+            signupButtonDidTap: signupButton.rx.tap.asSingle()
         )
         let output = viewModel.transform(input: input)
 
         output.isButtonEnabled
-            .subscribe(onNext: { [weak self] isEnabled in
+            .drive(onNext: { [weak self] isEnabled in
                 guard let self = self else { return }
 
                 self.signupButton.isEnabled = isEnabled
@@ -63,6 +63,25 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
                 self.signupButton.setTitleColor(isEnabled ? UIColor.primary100 : UIColor.primary500, for: .normal)
                 self.signupButton.alpha = isEnabled ? 1 : 0.4
             })
+            .disposed(by: disposeBag)
+
+        output.idErrorDescription
+            .asObservable()
+            .bind { description in
+                self.idAuthTextField.setDescription(description)
+            }
+            .disposed(by: disposeBag)
+        output.passwordErrorDescription
+            .asObservable()
+            .bind { description in
+                self.pwdAuthTextField.setDescription(description)
+            }
+            .disposed(by: disposeBag)
+        output.passwordConfirmErrorDescription
+            .asObservable()
+            .bind { description in
+                self.pwdConfirmAuthTextField.setDescription(description)
+            }
             .disposed(by: disposeBag)
     }
     public override func addView() {

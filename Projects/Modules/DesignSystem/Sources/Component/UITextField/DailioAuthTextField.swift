@@ -18,6 +18,10 @@ public final class DailioAuthTextField: UIView {
     private let authLabel = UILabel().then {
         $0.setDailioText("", font: .caption4, color: .black)
     }
+    private let errorLabel = UILabel().then {
+        $0.setDailioText("", font: .caption1, color: .error)
+        $0.isHidden = true
+    }
 
     public init(_ text: String, placeholder: String) {
         super.init(frame: .zero)
@@ -31,16 +35,28 @@ public final class DailioAuthTextField: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public func setDescription(_ descriptionType: DescriptionType) {
+        switch descriptionType {
+        case .error(let description):
+            errorLabel.text = description
+            errorLabel.isHidden = false
+        default:
+            errorLabel.text = nil
+            errorLabel.isHidden = true
+        }
+    }
+
     private func addView() {
         [
             authTextField,
-            authLabelView
+            authLabelView,
+            errorLabel
         ].forEach { self.addSubview($0) }
         self.authLabelView.addSubview(authLabel)
     }
     private func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(66)
+            $0.height.equalTo(70)
         }
         authTextField.snp.makeConstraints {
             $0.top.equalToSuperview().inset(8)
@@ -55,6 +71,10 @@ public final class DailioAuthTextField: UIView {
         authLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(4)
+        }
+        errorLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.leading.equalTo(authTextField.snp.leading)
         }
     }
 }
