@@ -31,7 +31,7 @@ public class AppFlow: Flow {
     }
 
     private func navigationToLogin() -> FlowContributors {
-        let loginFlow = LoginFlow(container: self.container)
+        let loginFlow = AuthFlow(container: self.container)
 
         Flows.use(loginFlow, when: .created) { [weak self] root in
             self?.window.rootViewController = root

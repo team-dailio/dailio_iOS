@@ -6,7 +6,7 @@ import Swinject
 import Core
 import Presentation
 
-public class LoginFlow: Flow {
+public class AuthFlow: Flow {
     public let container: Container
     private var rootViewController = UINavigationController()
     public var root: Presentable {
@@ -17,7 +17,7 @@ public class LoginFlow: Flow {
         self.container = container
     }
 
-    public func navigate(to step: any RxFlow.Step) -> RxFlow.FlowContributors {
+    public func navigate(to step: any Step) -> FlowContributors {
         guard let step = step as? DailioStep else { return .none }
 
         switch step {
@@ -25,6 +25,10 @@ public class LoginFlow: Flow {
             return navigateToSignup()
         case .loginIsRequired:
             return navigateToLogin()
+        case .authPopIsRequired:
+            return signupPop()
+        default:
+            return .none
         }
     }
 
@@ -43,5 +47,9 @@ public class LoginFlow: Flow {
             withNextPresentable: loginVC,
             withNextStepper: loginVC.viewModel
         ))
+    }
+    private func signupPop() -> FlowContributors {
+        self.rootViewController.popViewController(animated: true)
+        return .none
     }
 }
