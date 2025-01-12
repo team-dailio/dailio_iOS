@@ -49,7 +49,8 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
             idText: idAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
             passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
             passwordConfirmText: pwdConfirmAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
-            emailText: emailAuthTextField.authTextField.rx.text.orEmpty.asObservable()
+            emailText: emailAuthTextField.authTextField.rx.text.orEmpty.asObservable(),
+            signupButtonDidTap: signupButton.rx.tap.asObservable()
         )
         let output = viewModel.transform(input: input)
 

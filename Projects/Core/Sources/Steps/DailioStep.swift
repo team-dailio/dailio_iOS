@@ -5,4 +5,5 @@ import RxFlow
 public enum DailioStep: Step {
     case loginIsRequired
     case signupIsRequired
+    case authPopIsRequired
 }
