@@ -15,7 +15,7 @@ public class SignupViewModel: BaseViewModel, Stepper {
         let passwordText: Driver<String>
         let passwordConfirmText: Driver<String>
         let emailText: Driver<String>
-        let signupButtonDidTap: Single<Void>
+        let signupButtonDidTap: Signal<Void>
     }
     public struct Output {
         let isButtonEnabled: Driver<Bool>

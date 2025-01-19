@@ -50,7 +50,7 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
             passwordText: pwdAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
             passwordConfirmText: pwdConfirmAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
             emailText: emailAuthTextField.authTextField.rx.text.orEmpty.asDriver(),
-            signupButtonDidTap: signupButton.rx.tap.asSingle()
+            signupButtonDidTap: signupButton.rx.tap.asSignal()
         )
         let output = viewModel.transform(input: input)
 
