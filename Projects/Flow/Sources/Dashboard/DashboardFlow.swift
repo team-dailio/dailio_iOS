@@ -6,7 +6,7 @@ import Presentation
 
 public class DashboardFlow: Flow {
     public let container: Container
-    private var rootViewController = UINavigationController()
+    private var rootViewController = BaseNavigationController()
     public var root: Presentable {
         return rootViewController
     }

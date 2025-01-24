@@ -12,13 +12,13 @@ public class BaseTabBarController: UITabBarController {
     private func setupTabBar() {
         self.tabBar.tintColor = .primary500
         self.tabBar.isTranslucent = false
-        self.tabBar.backgroundColor = .clear
+        self.tabBar.backgroundColor = .red
         self.delegate = self
 
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.shadowColor = .gray100
-        appearance.backgroundColor = .clear
+        appearance.backgroundColor = .red
         self.tabBar.scrollEdgeAppearance = appearance
     }
 

@@ -8,7 +8,7 @@ import Presentation
 
 public class AuthFlow: Flow {
     public let container: Container
-    private var rootViewController = UINavigationController()
+    private var rootViewController = BaseNavigationController()
     public var root: Presentable {
         return rootViewController
     }
@@ -27,6 +27,8 @@ public class AuthFlow: Flow {
             return navigateToLogin()
         case .authPopIsRequired:
             return signupPop()
+        case .tabIsRequired:
+            return navigateToTabView()
         default:
             return .none
         }
@@ -51,5 +53,8 @@ public class AuthFlow: Flow {
     private func signupPop() -> FlowContributors {
         self.rootViewController.popViewController(animated: true)
         return .none
+    }
+    private func navigateToTabView() -> FlowContributors {
+        return .end(forwardToParentFlowWithStep: DailioStep.tabIsRequired)
     }
 }
