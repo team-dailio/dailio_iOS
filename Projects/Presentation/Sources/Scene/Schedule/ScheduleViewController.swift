@@ -7,7 +7,4 @@ import Core
 import DesignSystem
 
 public class ScheduleViewController: BaseViewController<ScheduleViewModel> {
-    public override func attribute() {
-        self.view.backgroundColor = .red
-    }
 }
