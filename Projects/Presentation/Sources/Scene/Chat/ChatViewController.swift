@@ -7,5 +7,4 @@ import Core
 import DesignSystem
 
 public class ChatViewController: BaseViewController<ChatViewModel> {
-    
 }

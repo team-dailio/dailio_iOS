@@ -27,12 +27,12 @@ public class ScheduleFlow: Flow {
     }
 
     private func navigateToSchedule() -> FlowContributors {
-        let vc = container.resolve(ScheduleViewController.self)!
+        let scheduleVC = container.resolve(ScheduleViewController.self)!
 
-        self.rootViewController.pushViewController(vc, animated: true)
+        self.rootViewController.pushViewController(scheduleVC, animated: true)
         return .one(flowContributor: .contribute(
-            withNextPresentable: vc,
-            withNextStepper: vc.viewModel
+            withNextPresentable: scheduleVC,
+            withNextStepper: scheduleVC.viewModel
         ))
     }
 

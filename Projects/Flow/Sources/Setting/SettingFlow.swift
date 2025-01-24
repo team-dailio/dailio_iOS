@@ -27,14 +27,13 @@ public class SettingFlow: Flow {
     }
 
     private func navigateToSetting() -> FlowContributors {
-        let vc = container.resolve(SettingViewController.self)!
+        let settingVC = container.resolve(SettingViewController.self)!
 
-        self.rootViewController.pushViewController(vc, animated: true)
+        self.rootViewController.pushViewController(settingVC, animated: true)
         return .one(flowContributor: .contribute(
-            withNextPresentable: vc,
-            withNextStepper: vc.viewModel
+            withNextPresentable: settingVC,
+            withNextStepper: settingVC.viewModel
         ))
     }
 
 }
-

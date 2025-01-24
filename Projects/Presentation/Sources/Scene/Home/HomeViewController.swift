@@ -7,5 +7,4 @@ import Core
 import DesignSystem
 
 public class HomeViewController: BaseViewController<HomeViewModel> {
-    
 }

@@ -27,14 +27,13 @@ public class HomeFlow: Flow {
     }
 
     private func navigateToHome() -> FlowContributors {
-        let vc = container.resolve(HomeViewController.self)!
+        let homeVC = container.resolve(HomeViewController.self)!
 
-        self.rootViewController.pushViewController(vc, animated: true)
+        self.rootViewController.pushViewController(homeVC, animated: true)
         return .one(flowContributor: .contribute(
-            withNextPresentable: vc,
-            withNextStepper: vc.viewModel
+            withNextPresentable: homeVC,
+            withNextStepper: homeVC.viewModel
         ))
     }
 
 }
-

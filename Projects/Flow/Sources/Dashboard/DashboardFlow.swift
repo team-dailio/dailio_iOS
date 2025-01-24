@@ -27,14 +27,13 @@ public class DashboardFlow: Flow {
     }
 
     private func navigateToDashboard() -> FlowContributors {
-        let vc = container.resolve(DashboardViewController.self)!
+        let dashboardVC = container.resolve(DashboardViewController.self)!
 
-        self.rootViewController.pushViewController(vc, animated: true)
+        self.rootViewController.pushViewController(dashboardVC, animated: true)
         return .one(flowContributor: .contribute(
-            withNextPresentable: vc,
-            withNextStepper: vc.viewModel
+            withNextPresentable: dashboardVC,
+            withNextStepper: dashboardVC.viewModel
         ))
     }
 
 }
-

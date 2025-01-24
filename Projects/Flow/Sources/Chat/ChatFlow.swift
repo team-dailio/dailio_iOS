@@ -27,12 +27,12 @@ public class ChatFlow: Flow {
     }
 
     private func navigateToChat() -> FlowContributors {
-        let vc = container.resolve(ChatViewController.self)!
+        let chatVC = container.resolve(ChatViewController.self)!
 
-        self.rootViewController.pushViewController(vc, animated: true)
+        self.rootViewController.pushViewController(chatVC, animated: true)
         return .one(flowContributor: .contribute(
-            withNextPresentable: vc,
-            withNextStepper: vc.viewModel
+            withNextPresentable: chatVC,
+            withNextStepper: chatVC.viewModel
         ))
     }
 

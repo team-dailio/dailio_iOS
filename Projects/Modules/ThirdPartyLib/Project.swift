@@ -21,7 +21,7 @@ let project = Project.makeModule(
         .SPM.Swinject,
         .SPM.FSCalendar,
         .SPM.RxDataSources,
-        .SPM.FCM,
+        .SPM.FCM
 //        .SPM.StarScream
     ]
 )
