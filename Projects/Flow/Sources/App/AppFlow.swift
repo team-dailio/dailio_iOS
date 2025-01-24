@@ -25,6 +25,8 @@ public class AppFlow: Flow {
         switch step {
         case .loginIsRequired:
             return navigationToLogin()
+        case .tabIsRequired:
+            return presentTabView()
         default:
             return .none
         }
@@ -42,6 +44,28 @@ public class AppFlow: Flow {
                 withNextPresentable: loginFlow,
                 withNextStepper: OneStepper(
                     withSingleStep: DailioStep.loginIsRequired
+                )
+            )
+        )
+    }
+    private func presentTabView() -> FlowContributors {
+        let tabsFlow = TabsFlow(container: self.container)
+
+        Flows.use(tabsFlow, when: .created) { [weak self] root in
+            UIView.transition(
+                with: self!.window,
+                duration: 0.5,
+                options: .transitionCrossDissolve
+            ) {
+                self?.window.rootViewController = root
+            }
+        }
+
+        return .one(
+            flowContributor: .contribute(
+                withNextPresentable: tabsFlow,
+                withNextStepper: OneStepper(
+                    withSingleStep: DailioStep.tabIsRequired
                 )
             )
         )

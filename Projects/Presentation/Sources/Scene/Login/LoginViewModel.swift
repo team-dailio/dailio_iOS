@@ -13,6 +13,7 @@ public class LoginViewModel: BaseViewModel, Stepper {
         let idText: Observable<String>
         let passwordText: Observable<String>
         let signupButtonDidTap: Observable<Void>
+        let loginButtonDidTap: Observable<Void>
     }
     public struct Output {
         let isButtonEnabled: Observable<Bool>
@@ -26,6 +27,11 @@ public class LoginViewModel: BaseViewModel, Stepper {
 
         input.signupButtonDidTap
             .map { DailioStep.signupIsRequired }
+            .bind(to: steps)
+            .disposed(by: disposeBag)
+
+        input.loginButtonDidTap
+            .map { DailioStep.tabIsRequired }
             .bind(to: steps)
             .disposed(by: disposeBag)
 

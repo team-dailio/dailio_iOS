@@ -83,6 +83,12 @@ public class SignupViewController: BaseViewController<SignupViewModel> {
                 self.pwdConfirmAuthTextField.setDescription(description)
             }
             .disposed(by: disposeBag)
+        output.emailErrorDescription
+            .asObservable()
+            .bind { description in
+                self.emailAuthTextField.setDescription(description)
+            }
+            .disposed(by: disposeBag)
     }
     public override func addView() {
         [
