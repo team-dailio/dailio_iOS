@@ -23,11 +23,19 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
         $0.tintColor = .white100
         $0.imageEdgeInsets = .init(top: 16, left: 16, bottom: 16, right: 16)
     }
+    private let idLabel = UILabel().then {
+        $0.setDailioText("circle08", font: .body1, color: .black100)
+    }
+    private let emailLabel = UILabel().then {
+        $0.setDailioText("hawon9781@dsm.hs.kr", font: .body3, color: .gray400)
+    }
 
     public override func addView() {
         [
             profileImageView,
-            editButton
+            editButton,
+            idLabel,
+            emailLabel
         ].forEach { view.addSubview($0) }
     }
     public override func setLayout() {
@@ -39,7 +47,15 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
         editButton.snp.makeConstraints {
             $0.bottom.equalTo(profileImageView.snp.bottom).inset(-14)
             $0.trailing.equalTo(profileImageView.snp.trailing).inset(-14)
-            $0.height.width.equalTo(56)
+          $0.height.width.equalTo(56)
+        }
+        idLabel.snp.makeConstraints {
+            $0.top.equalTo(editButton.snp.bottom).offset(24)
+            $0.centerX.equalToSuperview()
+        }
+        emailLabel.snp.makeConstraints {
+            $0.top.equalTo(idLabel.snp.bottom).offset(8)
+            $0.centerX.equalToSuperview()
         }
     }
     public override func configureNavigation() {
