@@ -24,6 +24,7 @@ public class BaseViewController<ViewModel: BaseViewModel>: UIViewController {
         super.viewDidLoad()
         attribute()
         bind()
+        configureNavigation()
     }
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,4 +44,5 @@ public class BaseViewController<ViewModel: BaseViewModel>: UIViewController {
     public func setLayout() {}
     public func bind() {}
     public func bindAction() {}
+    public func configureNavigation() {}
 }
