@@ -20,8 +20,10 @@ public extension UIImage {
     static let down = DesignSystemAsset.Images.down.image
     static let up = DesignSystemAsset.Images.up.image
     static let dropdown = DesignSystemAsset.Images.dropdown.image
+    static let edit = DesignSystemAsset.Images.edit.image
     static let comment = DesignSystemAsset.Images.comment.image
     static let person = DesignSystemAsset.Images.person.image
+    static let profile = DesignSystemAsset.Images.profile.image
     static let logo = DesignSystemAsset.Images.logo.image
     static let logoHeader = DesignSystemAsset.Images.logoHeader.image
 }

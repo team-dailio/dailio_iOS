@@ -14,6 +14,6 @@ public extension UIColor {
     static let error = DesignSystemAsset.Colors.error.color
     static let success = DesignSystemAsset.Colors.success.color
     static let info = DesignSystemAsset.Colors.info.color
-    static let black = DesignSystemAsset.Colors.black.color
-    static let white = DesignSystemAsset.Colors.white.color
+    static let black100 = DesignSystemAsset.Colors.black.color
+    static let white100 = DesignSystemAsset.Colors.white.color
 }
