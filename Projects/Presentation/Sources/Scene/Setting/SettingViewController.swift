@@ -36,6 +36,21 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
         $0.titleLabel?.font = .dailioFont(.body1)
     }
 
+    public override func bind() {
+        let input = SettingViewModel.Input(
+            deleteAccountButtonDidTab: deleteAccountButton.rx.tap.asObservable()
+        )
+        let output = viewModel.transform(input: input)
+        output.deleteAccountButtonTapped
+            .subscribe(onNext: { [weak self] in
+                let alert = DailioAlert(
+                    titleText: "회원탈퇴",
+                    explainText: "탈퇴 후 서비스를 이용하실 수 없습니다.\n정말로 탈퇴하시겠습니까?"
+                )
+                self?.present(alert, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
     public override func addView() {
         [
             profileImageView,

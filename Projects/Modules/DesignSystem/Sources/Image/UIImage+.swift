@@ -24,6 +24,7 @@ public extension UIImage {
     static let comment = DesignSystemAsset.Images.comment.image
     static let person = DesignSystemAsset.Images.person.image
     static let profile = DesignSystemAsset.Images.profile.image
+    static let cancel = DesignSystemAsset.Images.cancel.image
     static let logo = DesignSystemAsset.Images.logo.image
     static let logoHeader = DesignSystemAsset.Images.logoHeader.image
 }
