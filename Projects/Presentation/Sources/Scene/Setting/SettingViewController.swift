@@ -29,13 +29,15 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
     private let emailLabel = UILabel().then {
         $0.setDailioText("hawon9781@dsm.hs.kr", font: .body3, color: .gray400)
     }
+    private let logoutButton = DailioConfirmButton("Logout")
 
     public override func addView() {
         [
             profileImageView,
             editButton,
             idLabel,
-            emailLabel
+            emailLabel,
+            logoutButton
         ].forEach { view.addSubview($0) }
     }
     public override func setLayout() {
@@ -56,6 +58,11 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
         emailLabel.snp.makeConstraints {
             $0.top.equalTo(idLabel.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
+        }
+        logoutButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(80)
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(48)
         }
     }
     public override func configureNavigation() {
