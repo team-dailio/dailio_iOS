@@ -30,6 +30,11 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
         $0.setDailioText("hawon9781@dsm.hs.kr", font: .body3, color: .gray400)
     }
     private let logoutButton = DailioConfirmButton("Logout")
+    private let deleteAccountButton = UIButton().then {
+        $0.setTitle("Delete Account", for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
+        $0.titleLabel?.font = .dailioFont(.body1)
+    }
 
     public override func addView() {
         [
@@ -37,7 +42,8 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
             editButton,
             idLabel,
             emailLabel,
-            logoutButton
+            logoutButton,
+            deleteAccountButton
         ].forEach { view.addSubview($0) }
     }
     public override func setLayout() {
@@ -60,7 +66,12 @@ public class SettingViewController: BaseViewController<SettingViewModel> {
             $0.centerX.equalToSuperview()
         }
         logoutButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(80)
+            $0.bottom.equalTo(deleteAccountButton.snp.top).inset(-16)
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(48)
+        }
+        deleteAccountButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.height.equalTo(48)
         }
